@@ -33,6 +33,47 @@
   }
 }
 
+.loading {
+  color: transparent !important;
+  pointer-events: none;
+  position: relative;
+}
+
+.loading:after {
+  content: "";
+  display: block;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid var(--color-slate-300);
+  border-color: var(--color-slate-300) transparent var(--color-slate-300) transparent;
+  -webkit-animation: spin 1.2s linear infinite;
+          animation: spin 1.2s linear infinite;
+  left: calc(50% - 0.5em);
+  top: calc(50% - 0.5em);
+  position: absolute !important;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .mt-4 {
   margin-top: 2rem;
 }
@@ -185,8 +226,13 @@ input[type=password]:focus {
 }
 
 .cart-item--remove {
+  background: none;
+  border: none;
   color: var(--color-slate-300);
+  cursor: pointer;
   font-size: 90%;
+  padding: 0;
+  text-decoration: underline;
 }
 
 .cart-item--remove:hover,

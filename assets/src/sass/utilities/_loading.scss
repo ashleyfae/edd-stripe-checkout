@@ -1,0 +1,28 @@
+.loading {
+    color: transparent !important;
+    pointer-events: none;
+    position: relative;
+
+    &:after {
+        content: "";
+        display: block;
+        width: 1em;
+        height: 1em;
+        border-radius: 50%;
+        border: 2px solid var(--color-slate-300);
+        border-color: var(--color-slate-300) transparent var(--color-slate-300) transparent;
+        animation: spin 1.2s linear infinite;
+        left: calc(50% - (1em * .5));
+        top: calc(50% - (1em * .5));
+        position: absolute !important;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

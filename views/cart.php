@@ -12,7 +12,7 @@
 <h2><?php esc_html_e('Your cart', 'edd-stripe-checkout'); ?></h2>
 <div id="cart">
     <?php foreach ($cart as $key => $item): ?>
-        <div class="cart-item">
+        <div class="cart-item" data-id="<?php echo esc_attr($key); ?>">
             <div class="cart-item--name">
                 <div><?php echo esc_html($item->getName()); ?></div>
                 <?php if ($item->is_renewal) : ?>
@@ -21,10 +21,10 @@
                     </div>
                 <?php endif; ?>
                 <div>
-                    <a
-                        href="#"
+                    <button
+                        type="button"
                         class="cart-item--remove"
-                    ><?php esc_html_e('Remove', 'edd-stripe-checkout'); ?></a>
+                    ><?php esc_html_e('Remove', 'edd-stripe-checkout'); ?></button>
                 </div>
             </div>
 

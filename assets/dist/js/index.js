@@ -1,6 +1,92 @@
 /******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
+
+/***/ "./assets/src/js/cart.js":
+/*!*******************************!*\
+  !*** ./assets/src/js/cart.js ***!
+  \*******************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_apiRequest__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/apiRequest */ "./assets/src/js/helpers/apiRequest.js");
+
+var cartItems = document.querySelectorAll('.cart-item');
+
+if (cartItems) {
+  cartItems.forEach(function (item) {
+    var removeButton = item.querySelector('.cart-item--remove');
+
+    if (!removeButton) {
+      return;
+    }
+
+    removeButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      var cartKey = item.getAttribute('data-id');
+
+      if (!cartKey) {
+        console.log('Missing cart key.');
+        return;
+      }
+
+      removeButton.classList.add('loading');
+      removeButton.disabled = true;
+      (0,_helpers_apiRequest__WEBPACK_IMPORTED_MODULE_0__["default"])('cart/' + cartKey, 'DELETE').then(function (response) {
+        item.remove();
+      })["catch"](function (error) {
+        console.log('Error removing from cart', error);
+      });
+    });
+  });
+}
+
+/***/ }),
+
+/***/ "./assets/src/js/helpers/apiRequest.js":
+/*!*********************************************!*\
+  !*** ./assets/src/js/helpers/apiRequest.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ apiRequest)
+/* harmony export */ });
+/* global restBase */
+
+/**
+ * Makes an API request.
+ *
+ * @param {string} endpoint
+ * @param {string} method
+ * @param {object} body
+ */
+function apiRequest(endpoint, method) {
+  var body = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+  var args = {
+    method: method,
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
+
+  if (Object.keys(body).length) {
+    args.body = JSON.stringify(body);
+  }
+
+  return fetch(restBase + '/' + endpoint, args).then(function (response) {
+    if (!response.ok) {
+      return Promiose.reject(response);
+    }
+
+    return response.json();
+  });
+}
+
+/***/ }),
 
 /***/ "./assets/src/js/helpers/toggleDisplay.js":
 /*!************************************************!*\
@@ -8,6 +94,7 @@
   \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "show": () => (/* binding */ show),
@@ -35,8 +122,21 @@ function hide(element) {
 /*!********************************!*\
   !*** ./assets/src/js/index.js ***!
   \********************************/
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
+
+__webpack_require__(/*! ./cart */ "./assets/src/js/cart.js");
+
+__webpack_require__(/*! ./login-register-form */ "./assets/src/js/login-register-form.js");
+
+/***/ }),
+
+/***/ "./assets/src/js/login-register-form.js":
+/*!**********************************************!*\
+  !*** ./assets/src/js/login-register-form.js ***!
+  \**********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_toggleDisplay__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/toggleDisplay */ "./assets/src/js/helpers/toggleDisplay.js");
 
@@ -88,6 +188,7 @@ function toggleLoginRegister(e) {
   \************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 

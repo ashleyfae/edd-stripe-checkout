@@ -23,6 +23,7 @@ class Plugin
     private array $serviceProviders = [
         ServiceProviders\AppServiceProvider::class,
         ServiceProviders\DatabaseServiceProvider::class,
+        ServiceProviders\ApiServiceProvider::class,
     ];
 
     private bool $serviceProvidersLoaded = false;

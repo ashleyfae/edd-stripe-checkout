@@ -73,6 +73,10 @@ use const EDD\StripeCheckout\EDD_STRIPE_CHECKOUT_FILE;
     </main>
 </div>
 
+<script type="text/javascript">
+    var restBase = "<?php echo esc_js(rest_url(\EDD\StripeCheckout\Api\RestRoute::NAMESPACE.'/v1')); ?>";
+</script>
+
 <script type="text/javascript" src="<?php echo esc_url(plugins_url('assets/dist/js/index.js',
     EDD_STRIPE_CHECKOUT_FILE)); ?>"></script>
 </body>
