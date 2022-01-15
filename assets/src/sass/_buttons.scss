@@ -1,0 +1,22 @@
+.button {
+    border: 1px solid;
+    box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+    border-radius: 5px;
+    color: #0F1111;
+    cursor: pointer;
+    display: inline-block;
+    font: {
+        size: 100%;
+    }
+    padding: .75rem 1.5rem;
+    text-decoration: none;
+
+    &--primary {
+        background: var(--color-yellow-300);
+        border-color: #FCD200;
+
+        &:hover {
+            background: var(--color-yellow-400);
+        }
+    }
+}

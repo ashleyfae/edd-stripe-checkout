@@ -1,0 +1,38 @@
+{
+  "name": "ashleyfae/edd-stripe-checkout",
+  "description": "Check out using Stripe Checkout.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "EDD\\StripeCheckout\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "EDD\\StripeCheckout\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=8.0",
+    "ashleyfae/laravel-container": "*",
+    "easydigitaldownloads/edd-addon-tools": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "mockery/mockery": "^1.4.4",
+    "phpunit/phpunit": "^9.0",
+    "yoast/phpunit-polyfills": "^1.0.3"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/ashleyfae/laravel-container"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/awesomemotive/edd-addon-tools"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+.login-register-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+
+    button {
+        background: none;
+        border: none;
+        color: var(--color-links);
+        padding: 0;
+        text-decoration: underline;
+
+        &:hover {
+            cursor: pointer;
+            color: var(--color-blue-600);
+            text-decoration: none;
+        }
+    }
+}
+
+.field {
+    margin-bottom: .5rem;
+
+    label {
+        display: block;
+    }
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    border-radius: 0.375rem;
+    border: 1px solid var(--color-grey-300);
+    margin-bottom: .25rem;
+    padding: 0.5rem 0.75rem;
+    width: 100%;
+
+    &:focus {
+        border-color: var(--color-blue-500);
+        outline: none;
+    }
+}
+
+.error {
+    color: var(--color-red-600);
+}
